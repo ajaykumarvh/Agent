@@ -1,5 +1,3 @@
----
-
 ## 🚀 How to Run & Test This Project (Live Demo Instructions)
 
 Want to see this automation generate a PDF automatically in your own Google Drive? Follow these 5 quick steps:
