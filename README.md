@@ -1,21 +1,28 @@
-# Agent
-# Enterprise Workspace Automation Ecosystem
+---
 
-## Project Overview
-This project is a fully automated, scalable business workflow built on the Google Workspace infrastructure. It is designed to eliminate manual data entry errors, automatically generate official PDF documentation, and strictly enforce data hygiene without requiring human administrative overhead. 
+## 🚀 How to Run & Test This Project (Live Demo Instructions)
 
-The system relies on a secure "Human-in-the-Loop" (HITL) architecture, ensuring that core databases are shielded from direct user edits and AI hallucinations.
+Want to see this automation generate a PDF automatically in your own Google Drive? Follow these 5 quick steps:
 
-## The Business Problem
-* Field technicians and employees often corrupt raw master spreadsheets by accidentally deleting rows or entering invalid data.
-* Generating official company documents (like incident logs or equipment reports) is highly manual and wastes thousands of human hours per year.
+### Prerequisites
+1. A Google Account (Drive, Docs, Sheets).
 
-## The Engineered Solution
-1. **The Secure Frontend (AppSheet Core):** A mobile-responsive user interface that acts as a secure barrier between the user and the database. It uses structural formulas like `ISNOTBLANK()` to enforce strict data entry rules.
-2. **The Cloud Database (Google Sheets):** A decoupled, relational data layer that safely stores verified inputs.
-3. **The Background Automation Engine (Google Apps Script):** A custom Node/JavaScript utility that runs silently on event triggers. When a user submits a clean record, the script instantly merges the data into a standardized template, generates a PDF, and archives it into a specific Drive directory.
+### Step-by-Step Setup
+1. **Clone the Database:** Create a Google Sheet with two tabs: `Master_Logs` and `Team_Directory`.
+2. **Create the Document Template:** Create a blank Google Doc, add your layout, and include placeholders: `<<Item_Name>>` and `<<Operational_Status>>`.
+3. **Deploy the Code:** 
+   * Open **Extensions > Apps Script** in your Google Sheet.
+   * Paste the code from `backend_factory.js`.
+   * Replace `YOUR_DOC_TEMPLATE_ID` and `YOUR_DRIVE_FOLDER_ID` with your own file IDs.
+4. **Enable the Event Trigger:**
+   * Go to **Triggers (Alarm Clock icon)** in Apps Script.
+   * Add a new trigger: `createOfficialPDF` | `From spreadsheet` | `On change`.
+5. **Test the Pipeline:** Add a new row to your `Master_Logs` sheet (or via AppSheet). Check your Google Drive folder—the PDF will generate automatically!
 
-## Future Enterprise AI Integration
-While the core pipeline is fully operational in this open-source repository, the final phase of this architecture is designed for a **Google Workspace Enterprise Tenant**. 
-* **Agent Orchestration:** Designed to utilize Workspace Studio Agents to autonomously scan inbound PDFs, cross-reference metadata against the database, and route conditional approval alerts to management via Google Chat.
-* **Data Loss Prevention (DLP):** Designed to implement custom Regex rules inside the Admin Console to block Sensitive PII from entering the AI prompt ecosystem.
+---
+
+## 📸 Automated Execution Evidence
+
+| AppSheet Frontend Form | Automated Execution Log | Generated PDF Output |
+| :---: | :---: | :---: |
+| *(Insert AppSheet Screenshot)* | *(Insert Execution Log Screenshot)* | *(Insert Generated PDF Screenshot)* |
